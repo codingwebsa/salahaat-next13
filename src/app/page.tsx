@@ -1,3 +1,11 @@
+import { Carousel } from "@/components";
+
 export default function Home() {
-  return <>Home page</>;
+  return (
+    <>
+      <div>
+        <Carousel />
+      </div>
+    </>
+  );
 }

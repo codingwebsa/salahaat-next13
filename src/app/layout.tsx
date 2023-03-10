@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { Navbar } from "@/components";
+import { Navbar, Provider } from "@/components";
 
 import { Hind_Siliguri, Roboto } from "next/font/google";
 import type { Metadata } from "next";
@@ -61,8 +61,10 @@ export default function RootLayout({
       className={`${hindSiligury.variable} ${roboto.variable} antialiased font-roboto`}
     >
       <body className="bg-slate-100">
-        <Navbar />
-        <main className="max-w-7xl mx-auto">{children}</main>
+        <Provider>
+          <Navbar />
+          <main className="max-w-7xl mx-auto">{children}</main>
+        </Provider>
       </body>
     </html>
   );
