@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       fontFamily: {
         hind: ["var(--font-hind)", ...fontFamily.sans],
+        roboto: ["var(--font-roboto)", ...fontFamily.sans],
       },
     },
   },

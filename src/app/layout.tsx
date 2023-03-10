@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import { Navbar } from "@/components";
 
-import { Hind_Siliguri } from "next/font/google";
+import { Hind_Siliguri, Roboto } from "next/font/google";
 import type { Metadata } from "next";
 
 const hindSiligury = Hind_Siliguri({
@@ -9,6 +9,12 @@ const hindSiligury = Hind_Siliguri({
   weight: ["400"],
   display: "swap",
   variable: "--font-hind",
+});
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {
@@ -52,11 +58,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${hindSiligury.variable} antialiased font-hind`}
+      className={`${hindSiligury.variable} ${roboto.variable} antialiased font-roboto`}
     >
-      <body>
+      <body className="bg-slate-100">
         <Navbar />
-        {children}
+        <main className="max-w-7xl mx-auto">{children}</main>
       </body>
     </html>
   );
