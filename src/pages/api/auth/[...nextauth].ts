@@ -1,18 +1,19 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
+// For more information on each option (and a full list of options) go to
+// https://next-auth.js.org/configuration/options
 export const authOptions: AuthOptions = {
-  // Configure one or more authentication providers
+  // https://next-auth.js.org/providers
   providers: [
     GoogleProvider({
-      // @ts-expect-error
+      // @ts-ignore
       clientId: process.env.GOOGLE_CLIENT_ID,
-      // @ts-expect-error
+      // @ts-ignore
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
-    // ...add more providers here
   ],
   secret: process.env.JWT_SECRET,
+  // ...
 };
-
 export default NextAuth(authOptions);

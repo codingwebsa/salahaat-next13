@@ -1,5 +1,7 @@
 import { Metadata } from "next";
-import { getSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import Form from "./Form";
 
 export const metadata: Metadata = {
   robots: {
@@ -18,9 +20,16 @@ export const metadata: Metadata = {
 };
 
 const Add = async () => {
-  const session = await getSession();
-  console.log(session);
-  return <div>Add</div>;
+  const data = await getServerSession(authOptions);
+  console.log("🚀 ~ file: page.tsx:23 ~ Add ~ data:", data?.user?.email);
+
+  return (
+    <>
+      <section>
+        <Form />
+      </section>
+    </>
+  );
 };
 
 export default Add;
