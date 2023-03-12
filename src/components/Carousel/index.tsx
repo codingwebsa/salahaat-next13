@@ -42,6 +42,7 @@ const CarouselCom = () => {
             autoPlay
             autoPlaySpeed={3000}
             keyBoardControl
+            dotListClass="custom-dot-list-style"
             transitionDuration={500}
             removeArrowOnDeviceType={["tablet", "mobile"]}
           >

@@ -5,3 +5,10 @@
 *:not(h1, h2, h3, h4, h5, h6, p, pre) {
   user-select: none;
 }
+/* carousel */
+.custom-dot-list-style > li > button {
+  border-color: white;
+}
+.react-multi-carousel-dot--active > button {
+  background: #0a9475;
+}

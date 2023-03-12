@@ -14,6 +14,11 @@ export const authOptions: AuthOptions = {
     }),
   ],
   secret: process.env.JWT_SECRET,
+  theme: {
+    logo: "https://salahaat.vercel.app/apple-icon.png",
+    brandColor: "#0a9475",
+    colorScheme: "light",
+  },
   // ...
 };
 export default NextAuth(authOptions);

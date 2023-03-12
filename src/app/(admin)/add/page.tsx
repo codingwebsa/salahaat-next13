@@ -21,11 +21,10 @@ export const metadata: Metadata = {
 
 const Add = async () => {
   const data = await getServerSession(authOptions);
-  console.log("🚀 ~ file: page.tsx:23 ~ Add ~ data:", data?.user?.email);
 
   return (
     <>
-      <section>
+      <section className="my-16 max-w-xl px-6 mx-auto">
         <Form />
       </section>
     </>
