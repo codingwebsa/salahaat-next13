@@ -9,6 +9,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        my: {
+          gray: "#71717a",
+        },
+      },
       fontFamily: {
         hind: ["var(--font-hind)", ...fontFamily.sans],
         roboto: ["var(--font-roboto)", ...fontFamily.sans],
@@ -30,5 +35,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/line-clamp")],
 };

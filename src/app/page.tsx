@@ -1,10 +1,11 @@
-import { Carousel } from "@/components";
+import { BookSection, Carousel } from "@/components";
 
 export default function Home() {
   return (
     <>
-      <div>
+      <div className="pb-32">
         <Carousel />
+        <BookSection title="Recent Books" />
       </div>
     </>
   );

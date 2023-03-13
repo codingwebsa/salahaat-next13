@@ -33,7 +33,7 @@ const Form = () => {
 
   async function handleSubmit(e: any) {
     e.preventDefault();
-
+    // accepting all inputs fields value as variables
     const _name = e.target.name.value,
       _author = e.target.author.value,
       _publication = e.target.publication.value,
@@ -44,9 +44,7 @@ const Form = () => {
       _description = e.target.description.value,
       _inStock = e.target.inStock.value,
       _img = imgFile;
-
-    console.log(_img);
-
+    // the condition
     let conditions =
       !_name ||
       !_author ||
@@ -57,7 +55,8 @@ const Form = () => {
       !_description;
 
     console.log(_img);
-
+    // INFO: checking if the conditions match
+    // INFO: if not, then it will throw an error with react-hot-toast
     if (conditions) {
       toast.error("Fill all the required inputs.");
       return;

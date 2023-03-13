@@ -58,7 +58,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${hindSiligury.variable} ${roboto.variable} antialiased font-roboto`}
+      className={`${hindSiligury.variable} ${roboto.variable} antialiased font-hind`}
     >
       <body className="bg-slate-100">
         <Provider>

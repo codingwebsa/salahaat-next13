@@ -35,7 +35,6 @@ const CarouselCom = () => {
           <Carousel
             swipeable
             draggable
-            showDots
             responsive={responsive}
             ssr // means to render carousel on server-side.
             infinite
@@ -56,6 +55,7 @@ const CarouselCom = () => {
                   quality={40}
                   alt=""
                   draggable={false}
+                  priority
                 />
               </div>
             ))}
