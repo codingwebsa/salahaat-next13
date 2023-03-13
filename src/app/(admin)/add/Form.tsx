@@ -5,17 +5,63 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
-import { ImageIcon, RockerIcon } from "@/icons";
+import { DeleteIcon, ImageIcon, RockerIcon } from "@/icons";
 import toast, { Toaster } from "react-hot-toast";
+import { useState } from "react";
 
 const Form = () => {
+  const [imgPreview, setImgPreview] = useState(null);
+  const [imgFile, setImgFile] = useState(null);
+
+  function handleImagePreview(e: any) {
+    // Get the selected image file
+    const imageFile = e.target.files[0];
+
+    if (imageFile) {
+      const reader = new FileReader();
+      // Convert the image file to a string
+      reader.readAsDataURL(imageFile);
+      // FileReader will emit the load event when the data URL is ready
+      // Access the string using result property inside the callback function
+      reader.addEventListener("load", () => {
+        // Get the data URL string
+        // @ts-ignore
+        setImgPreview(reader.result);
+      });
+    }
+  }
+
   async function handleSubmit(e: any) {
     e.preventDefault();
 
-    if (!e.target.img.value) {
-      toast.error("You need to add a image.");
+    const _name = e.target.name.value,
+      _author = e.target.author.value,
+      _publication = e.target.publication.value,
+      _category = e.target.category.value,
+      _details = e.target.details.value,
+      _price = e.target.price.value,
+      _discountPrice = e.target.discountPrice.value,
+      _description = e.target.description.value,
+      _inStock = e.target.inStock.value,
+      _img = imgFile;
+
+    console.log(_img);
+
+    let conditions =
+      !_name ||
+      !_author ||
+      !_publication ||
+      !_category ||
+      !_price ||
+      !_img ||
+      !_description;
+
+    console.log(_img);
+
+    if (conditions) {
+      toast.error("Fill all the required inputs.");
+      return;
     }
-    console.log(e.target.img.value);
   }
   return (
     <>
@@ -75,20 +121,46 @@ const Form = () => {
           />
         </div>
 
-        <div className="flex items-center space-x-2 my-3">
-          <label
-            htmlFor="img"
-            className="w-full h-64 border-2 border-dashed border-slate-300 flex items-center justify-center gap-2 text-slate-400 cursor-pointer"
-          >
-            <ImageIcon /> Upload book image.
-          </label>
-          <input
-            type="file"
-            name="img"
-            id="img"
-            accept="image/*"
-            className="hidden"
-          />
+        <div className="flex items-center space-x-2 my-3 relative">
+          {!imgPreview ? (
+            <>
+              <label
+                htmlFor="img"
+                className="w-full h-64 border-2 border-dashed border-slate-300 flex items-center justify-center gap-2 text-slate-400 cursor-pointer"
+              >
+                <ImageIcon /> Upload book image.
+              </label>
+              <input
+                type="file"
+                name="img"
+                id="img"
+                onChange={(e) => {
+                  handleImagePreview(e);
+                  // @ts-ignore
+                  setImgFile(e.target.files?.[0]);
+                }}
+                accept="image/*"
+                className="hidden"
+              />
+            </>
+          ) : (
+            <>
+              <img
+                src={imgPreview}
+                className="w-full h-auto rounded-lg"
+                alt="preview"
+              />
+              <span
+                className="absolute top-4 right-4 p-3 bg-rose-700 text-white rounded-full cursor-pointer"
+                onClick={() => {
+                  setImgPreview(null);
+                  setImgFile(null);
+                }}
+              >
+                <DeleteIcon size={20} />
+              </span>
+            </>
+          )}
         </div>
         <div className="flex items-center space-x-2 my-3">
           <Switch name="inStock" id="inStock" />
